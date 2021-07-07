@@ -77,6 +77,18 @@ if (pageS) {
 			bulletClass: "page__bullet",
 			bulletActiveClass: "page__bullet_active",
 		},
+
+		// breakpoints: {
+		// 	1980: {
+  //        	parallax: true,
+  //        	freeMode: false,
+  //        },
+  //        620: {
+  //        	parallax: false,
+  //        	freeMode: true,
+  //        },
+  //     },
+
 		scrollbar: {
 			el: '.page__scroll',
 			dragClass: "page__drag-scroll",
@@ -104,6 +116,8 @@ if (pageS) {
 	});
 
 	let menuLincks = document.querySelectorAll('.menu-linck');
+
+	let parallaxSwiper = document.querySelectorAll('.parallax_swiper');
 
 	function menuSlider () {
 		menuLincks[pageSlider.realIndex].classList.add('-active');
@@ -133,6 +147,7 @@ if (pageS) {
 			wrapper.classList.remove('free');
 			pageSlider.params.freeMode = false;
 			pageSlider.params.parallax = true;
+			// pageSlider.reInit();
 		}
 
 		for (let i = 0; i < pageSlider.slides.length; i++) {
@@ -144,12 +159,17 @@ if (pageS) {
 					wrapper.classList.add('free');
 					pageSlider.params.freeMode = true;
 					pageSlider.params.parallax = false;
+					// pageSlider.reInit();
+					for (let a = 0; a < parallaxSwiper.length; a++) {
+	               const el = parallaxSwiper[a];
+	               el.style.opacity = 1;
+	               el.style.transform = "translate3d(" + 0 + "px, " + 0 + "%, " + 0 + "px)";
+	            }
 					break;
 				}
 			}
 		}
 	}
-
 	pageSlider.init();
 }
 
@@ -397,6 +417,8 @@ let sliderSundry_2 = new Swiper ('.slider-sundry-2',{
   	},
 
   	centeredSlides: true,
+
+  	// spaceBetween: 100,
 
   	scrollbar:{
   		el:'.swiper-scrollbar',
